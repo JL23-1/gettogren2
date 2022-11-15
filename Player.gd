@@ -1,10 +1,12 @@
 extends KinematicBody2D
 # physics
-var speed : int = 200
-var jumpForce : int = 300
-var gravity : int = 800
+var accel : int = 100
+var max_speed : int = 300
+var jumpForce : int = 450
+var gravity : int = 750
 var vel : Vector2 = Vector2()
 var grounded : bool = false
+var jumps : int
 # components
 onready var sprite = $Sprite
 
@@ -22,17 +24,25 @@ func _ready():
 #	pass
 
 func _physics_process (delta):
-	# reset horizontal velocity
-	vel.x = 0
-	# movement inputs
-	if Input.is_action_pressed("move_left"):
-		vel.x -= speed
-	if Input.is_action_pressed("move_right"):
-		vel.x += speed
-	# applying the velocity
 	vel = move_and_slide(vel, Vector2.UP)
+	# movement inputs
+	if Input.is_action_pressed("move_right"):
+		vel.x = min(vel.x+accel, max_speed)
+	elif Input.is_action_pressed("move_left"):
+		vel.x = max(vel.x-accel, -max_speed)
+	else:
+		 vel.x = lerp(vel.x, 0, 0.2)
 	# gravity
 	vel.y += gravity * delta
 	# jump input
-	if Input.is_action_pressed("jump") and is_on_floor():
+	if is_on_floor():
+		jumps = 1
+	if Input.is_action_pressed("jump") and jumps > 0:
+		jumps -= 1
 		vel.y -= jumpForce
+	if is_on_wall() and Input.is_action_pressed("move_left") and Input.is_action_just_pressed("jump"):
+		vel.y -= jumpForce
+		vel.x = 500
+	elif is_on_wall() and Input.is_action_pressed("move_left") and Input.is_action_just_pressed("jump"):
+		vel.y -= jumpForce
+		vel.x = -500
