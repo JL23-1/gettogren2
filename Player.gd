@@ -1,9 +1,9 @@
 extends KinematicBody2D
 # physics
 var accel : int = 100
-var max_speed : int = 300
-var jumpForce : int = 450
-var gravity : int = 750
+var max_speed : int = 500
+var jumpForce : int = 500
+var gravity : int = 500
 var vel : Vector2 = Vector2()
 var grounded : bool = false
 var jumps : int
@@ -28,7 +28,7 @@ func _physics_process (delta):
 	# movement inputs
 	if Input.is_action_pressed("move_right"):
 		vel.x = min(vel.x+accel, max_speed)
-	elif Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left"):
 		vel.x = max(vel.x-accel, -max_speed)
 	else:
 		 vel.x = lerp(vel.x, 0, 0.2)
@@ -40,9 +40,9 @@ func _physics_process (delta):
 	if Input.is_action_pressed("jump") and jumps > 0:
 		jumps -= 1
 		vel.y -= jumpForce
-	if is_on_wall() and Input.is_action_pressed("move_left") and Input.is_action_just_pressed("jump"):
-		vel.y -= jumpForce
-		vel.x = 500
-	elif is_on_wall() and Input.is_action_pressed("move_left") and Input.is_action_just_pressed("jump"):
-		vel.y -= jumpForce
-		vel.x = -500
+	if is_on_wall() and Input.is_action_pressed("move_left") and Input.is_action_just_pressed("jump") and !is_on_floor():
+		vel.y = -500
+		#vel.x = 600
+	elif is_on_wall() and Input.is_action_pressed("move_right") and Input.is_action_just_pressed("jump") and !is_on_floor():
+		vel.y = -500
+		#vel.x = -600
