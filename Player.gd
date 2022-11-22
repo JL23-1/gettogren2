@@ -46,3 +46,12 @@ func _physics_process (delta):
 	elif is_on_wall() and Input.is_action_pressed("move_right") and Input.is_action_just_pressed("jump") and !is_on_floor():
 		vel.y = -500
 		#vel.x = -600
+
+
+
+func _on_exit_body_entered(body):
+	get_tree().quit()
+
+
+func _on_level1_body_entered(body):
+	get_tree().change_scene("res://level1.tscn")
