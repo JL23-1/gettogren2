@@ -8,11 +8,7 @@
 [node name="level1" type="Node2D"]
 
 [node name="Jump" type="Sprite" parent="."]
-position = Vector2( 541, 721 )
-scale = Vector2( 0.794643, 0.794643 )
-texture = ExtResource( 3 )
-
-[node name="Jump2" type="Sprite" parent="."]
+modulate = Color( 0.5, 0.5, 0.5, 1 )
 position = Vector2( 541, 721 )
 scale = Vector2( 0.794643, 0.794643 )
 texture = ExtResource( 3 )
@@ -26,3 +22,5 @@ tile_data = PoolIntArray( -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0
 [node name="Area2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1440, 996 )
 scale = Vector2( 0.626322, 0.383875 )
+collision_layer = 2
+collision_mask = 2
