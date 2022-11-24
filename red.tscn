@@ -7,7 +7,7 @@
 extents = Vector2( 255, 255 )
 
 [node name="Area2D" type="Area2D"]
-modulate = Color( 3.46, 1, 1, 1 )
+modulate = Color( 1.5, 1, 1, 1 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )
