@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gtg2.png" type="Texture" id=3]
 [ext_resource path="res://exit.gd" type="Script" id=4]
-[ext_resource path="res://bullet.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 98.5, 12 )
@@ -63,9 +62,6 @@ text = "Exit"
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 129, 106 )
-
-[node name="bullet" parent="." instance=ExtResource( 5 )]
-position = Vector2( 325, 663 )
 
 [connection signal="body_entered" from="exit" to="Player" method="_on_exit_body_entered"]
 [connection signal="body_entered" from="level1" to="Player" method="_on_level1_body_entered"]
