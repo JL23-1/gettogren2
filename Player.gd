@@ -54,4 +54,4 @@ func _on_exit_body_entered(body):
 
 
 func _on_level1_body_entered(body):
-#	get_tree().change_scene("res://level1.tscn")
+	get_tree().change_scene("res://level1.tscn")
