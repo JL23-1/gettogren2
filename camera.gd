@@ -1,4 +1,4 @@
-extends Area2D
+extends Camera2D
 
 
 # Declare member variables here. Examples:
@@ -12,13 +12,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-func _physics_process(delta):
-	position.y -= 75
-
-
-func _on_bullet_body_entered(body):
-	var currentScene = get_tree().get_current_scene().get_filename()
-	print("die") # for Debug
-	get_tree().change_scene(currentScene)
+func _process(delta):
+	position.x = -get_parent().position.x
