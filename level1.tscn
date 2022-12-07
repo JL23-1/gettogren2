@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://jump.png" type="Texture" id=3]
 [ext_resource path="res://red.tscn" type="PackedScene" id=4]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="level1" type="Node2D"]
+
+[node name="BG" parent="." instance=ExtResource( 5 )]
 
 [node name="Jump" type="Sprite" parent="."]
 modulate = Color( 0.5, 0.5, 0.5, 1 )
@@ -22,3 +27,14 @@ tile_data = PoolIntArray( -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0
 [node name="Area2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1440, 996 )
 scale = Vector2( 0.626322, 0.383875 )
+
+[node name="level2" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level2"]
+position = Vector2( 1886, 505 )
+scale = Vector2( 2.28366, 55.1277 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="level2" to="Player" method="_on_level2_body_entered"]

@@ -54,4 +54,24 @@ func _on_exit_body_entered(body):
 
 
 func _on_level1_body_entered(body):
-#	get_tree().change_scene("res://level1.tscn")
+	get_tree().change_scene("res://level1.tscn")
+
+
+func _on_level2_body_entered(body):
+	get_tree().change_scene("res://level2.tscn")
+
+
+func _on_level3_body_entered(body):
+	get_tree().change_scene("res://level3.tscn")
+
+
+func _on_level4_body_entered(body):
+	get_tree().change_scene("res://level4.tscn")
+
+
+func _on_level5_body_entered(body):
+	get_tree().change_scene("res://level5.tscn")
+
+
+func _on_level6_body_entered(body):
+	get_tree().change_scene("res://main.tscn")
