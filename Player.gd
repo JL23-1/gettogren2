@@ -75,3 +75,7 @@ func _on_level5_body_entered(body):
 
 func _on_level6_body_entered(body):
 	get_tree().change_scene("res://main.tscn")
+
+
+func _on_secret_body_entered(body):
+	get_tree().change_scene("res://secret.tscn")

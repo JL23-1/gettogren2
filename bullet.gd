@@ -22,3 +22,7 @@ func _on_bullet_body_entered(body):
 	var currentScene = get_tree().get_current_scene().get_filename()
 	print("die") # for Debug
 	get_tree().change_scene(currentScene)
+
+
+func _on_bullet_area_entered(area):
+	get_parent().remove_child(self)

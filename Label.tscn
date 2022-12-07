@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Label.gd" type="Script" id=1]
+
+[node name="Label" type="Label"]
+self_modulate = Color( 0.5, 0.5, 0.5, 1 )
+margin_right = 40.0
+margin_bottom = 14.0
+rect_scale = Vector2( 2.5225, 2.17236 )
+script = ExtResource( 1 )
